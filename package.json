@@ -18,11 +18,7 @@
 			{
 				"command": "tiagotools.flat",
 				"title": "Flat JSON",
-				"category": "TIAGO TOOLS",
-				"icon": {
-					"dark": "src/images/icon.png",
-					"light": "src/images/icon.png"
-				}
+				"category": "TIAGO TOOLS"
 			},
 			{
 				"command": "tiagotools.unflat",
