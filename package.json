@@ -1,51 +1,55 @@
 {
-  "name": "tsjsonutilstiago",
-  "displayName": "tsJsonUtilsTiago",
-  "description": "",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.82.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [],
-  "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "tsjsonutilstiago.helloWorld",
-        "title": "Hello World"
-      },
-      {
-        "command": "tsjsonutilstiago.flat",
-        "title": "Flat JSON"
-      },
-      {
-        "command": "tsjsonutilstiago.unflat",
-        "title": "UNFlat JSON"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
-  },
-  "devDependencies": {
-    "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
-    "@types/vscode": "^1.82.0",
-    "@typescript-eslint/eslint-plugin": "^6.4.1",
-    "@typescript-eslint/parser": "^6.4.1",
-    "@vscode/test-electron": "^2.3.4",
-    "eslint": "^8.47.0",
-    "glob": "^10.3.3",
-    "mocha": "^10.2.0",
-    "prettier": "3.0.3",
-    "typescript": "^5.1.6"
-  }
+	"name": "tiagotools",
+	"displayName": "tiagotools",
+	"publisher": "tiagoInc",
+	"icon": "src/images/icon.png",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.82.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "tiagotools.flat",
+				"title": "Flat JSON",
+				"category": "TIAGO TOOLS",
+				"icon": {
+					"dark": "src/images/icon.png",
+					"light": "src/images/icon.png"
+				}
+			},
+			{
+				"command": "tiagotools.unflat",
+				"title": "UNFlat JSON",
+				"category": "TIAGO TOOLS"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.1",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.82.0",
+		"@typescript-eslint/eslint-plugin": "^6.4.1",
+		"@typescript-eslint/parser": "^6.4.1",
+		"@vscode/test-electron": "^2.3.4",
+		"eslint": "^8.47.0",
+		"glob": "^10.3.3",
+		"mocha": "^10.2.0",
+		"prettier": "3.0.3",
+		"typescript": "^5.1.6"
+	}
 }
