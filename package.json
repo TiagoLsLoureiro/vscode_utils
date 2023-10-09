@@ -2,8 +2,13 @@
 	"name": "tiagotools",
 	"displayName": "tiagotools",
 	"publisher": "tiagoInc",
-	"icon": "src/images/icon.png",
+	"icon": "images/icon.png",
 	"description": "",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TiagoLsLoureiro/vscode_utils"
+	},
+	"license": "MIT",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.82.0"
@@ -24,6 +29,21 @@
 				"command": "tiagotools.unflat",
 				"title": "UNFlat JSON",
 				"category": "TIAGO TOOLS"
+			},
+			{
+				"command": "tiagotools.xlsx",
+				"title": "xlsx JSON",
+				"category": "TIAGO TOOLS"
+			},
+			{
+				"command": "tiagotools.xlsx2",
+				"title": "xlsx2 JSON",
+				"category": "TIAGO TOOLS"
+			},
+			{
+				"command": "tiagotools.readXlsltranslation",
+				"title": "read xlsx translations",
+				"category": "TIAGO TOOLS"
 			}
 		]
 	},
@@ -33,7 +53,8 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
 		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./out/test/runTest.js",
+		"package": "vsce"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.1",
@@ -47,5 +68,8 @@
 		"mocha": "^10.2.0",
 		"prettier": "3.0.3",
 		"typescript": "^5.1.6"
+	},
+	"dependencies": {
+		"xlsx": "^0.18.5"
 	}
 }

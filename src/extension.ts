@@ -1,49 +1,15 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as path from 'path';
+import * as fs from 'fs';
+import * as XLSX from 'xlsx';
 import { flatten, unflatten } from './flatTools';
-
-const replaceText = (newContent: string) => {
-	const editor = vscode.window.activeTextEditor;
-	if (!editor) {
-		return;
-	}
-
-	const selection = editor.selection;
-	if (selection && !selection.isEmpty) {
-		const selectionRange = new vscode.Range(
-			selection.start.line,
-			selection.start.character,
-			selection.end.line,
-			selection.end.character
-		);
-		const highlighted = editor.document.getText(selectionRange);
-
-		editor.edit((builder) => {
-			builder.replace(selectionRange, newContent);
-		});
-	}
-};
-const getSelectionText = (): string => {
-	const editor = vscode.window.activeTextEditor;
-	if (!editor) {
-		return '';
-	}
-
-	const selection = editor.selection;
-	if (selection && !selection.isEmpty) {
-		const selectionRange = new vscode.Range(
-			selection.start.line,
-			selection.start.character,
-			selection.end.line,
-			selection.end.character
-		);
-		const highlighted = editor.document.getText(selectionRange);
-
-		return highlighted;
-	}
-	return '';
-};
+import { flatCommand } from './commands/flat';
+import { unflatCommand } from './commands/unflat';
+import { singleXlslCommand } from './commands/singlexlsx';
+import { multiLocaleXlsxCommand } from './commands/multiLocaleXlsx';
+import { readmultiLocaleXlsxCommand } from './commands/readMultiLocaleXlsx';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -62,41 +28,29 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	disposable = vscode.commands.registerCommand('tiagotools.flat', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-
-		const selectedText = getSelectionText();
-
-		try {
-			const objectResult = JSON.parse(selectedText);
-
-			replaceText(JSON.stringify(flatten(objectResult), null, 2));
-
-			vscode.window.showInformationMessage('success');
-		} catch (error) {
-			vscode.window.showErrorMessage(JSON.stringify(error));
-		}
-	});
+	disposable = vscode.commands.registerCommand('tiagotools.flat', flatCommand);
 
 	context.subscriptions.push(disposable);
 	// ! UNFLAT
-	disposable = vscode.commands.registerCommand('tiagotools.unflat', async () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
+	disposable = vscode.commands.registerCommand('tiagotools.unflat', unflatCommand);
 
-		const selectedText = getSelectionText();
+	context.subscriptions.push(disposable);
 
-		try {
-			const objectResult = JSON.parse(selectedText);
+	// ! XLSX
+	disposable = vscode.commands.registerCommand('tiagotools.xlsx', singleXlslCommand(customConsole));
 
-			replaceText(JSON.stringify(unflatten(objectResult), null, 2));
+	context.subscriptions.push(disposable);
 
-			vscode.window.showInformationMessage('success');
-		} catch (error) {
-			vscode.window.showErrorMessage(JSON.stringify(error));
-		}
-	});
+	// ! XLSX
+	disposable = vscode.commands.registerCommand('tiagotools.xlsx2', multiLocaleXlsxCommand(customConsole));
+
+	context.subscriptions.push(disposable);
+
+	// ! XLSX READ
+	disposable = vscode.commands.registerCommand(
+		'tiagotools.readXlsltranslation',
+		readmultiLocaleXlsxCommand(customConsole)
+	);
 
 	context.subscriptions.push(disposable);
 }

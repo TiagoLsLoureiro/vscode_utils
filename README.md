@@ -1,13 +1,4 @@
-# TIAGO TOOLS README
-
-This is the README for your extension "tiagotools". After writing up a brief description, we recommend including the following sections.
-
-## Quick Start
-
-clone project into your vscode extensions folder:
-
-~/.vscode/extensions/
-
+# TIAGO TOOLS
 
 ## Features
 
@@ -27,11 +18,11 @@ If you have any requirements or dependencies, add a section describing those and
 
 Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-| Command Name             | Identifier              | function                                                            |
-| ------------------------ | ----------------------- | ------------------------------------------------------------------- |
+| Command Name             | Identifier        | function                                                            |
+| ------------------------ | ----------------- | ------------------------------------------------------------------- |
 | TIAGO TOOLS: Flat JSON   | tiagotools.flat   | replaces current cursor selection json structure by a flatten one   |
 | TIAGO TOOLS: UNFlat JSON | tiagotools.unflat | replaces current cursor selection json structure by a unflatten one |
-|                          |                         |                                                                     |
+|                          |                   |                                                                     |
 
 ## Known Issues
 
