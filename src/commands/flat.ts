@@ -1,7 +1,4 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
-import * as fs from 'fs';
-import * as XLSX from 'xlsx';
 import { flatten } from '../flatTools';
 import { getSelectionText, replaceText } from '../helper';
 
@@ -14,7 +11,7 @@ export const flatCommand = () => {
 	try {
 		const objectResult = JSON.parse(selectedText);
 
-		replaceText(JSON.stringify(flatten(objectResult), null, 2));
+		replaceText(JSON.stringify(flatten(objectResult), null, 4));
 
 		vscode.window.showInformationMessage('success');
 	} catch (error) {

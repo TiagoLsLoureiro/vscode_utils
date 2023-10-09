@@ -32,12 +32,12 @@
 			},
 			{
 				"command": "tiagotools.xlsx",
-				"title": "xlsx JSON",
+				"title": "create xlsx for current translation folder",
 				"category": "TIAGO TOOLS"
 			},
 			{
 				"command": "tiagotools.xlsx2",
-				"title": "xlsx2 JSON",
+				"title": "create xlsx for all translations",
 				"category": "TIAGO TOOLS"
 			},
 			{

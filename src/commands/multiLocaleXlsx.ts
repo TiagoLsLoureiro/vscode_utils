@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as XLSX from 'xlsx';
 import { flatten } from '../flatTools';
-import { folderUri, getDocumentWorkspaceFolder, nameWithUnderscore } from '../helper';
+import { getDocumentWorkspaceFolder } from '../helper';
 import { FileType } from 'vscode';
 
 export const multiLocaleXlsxCommand = (customConsole: vscode.OutputChannel) => async () => {
@@ -38,16 +38,16 @@ export const multiLocaleXlsxCommand = (customConsole: vscode.OutputChannel) => a
 					customConsole.appendLine(`### ${jsonFilePath}`);
 					try {
 						const jsonString = fs.readFileSync(jsonFilePath, 'utf8');
-						// customConsole.appendLine('---' + JSON.stringify(JSON.parse(data), null, 2));
+						// customConsole.appendLine('---' + JSON.stringify(JSON.parse(data), null, 4));
 
 						const flattned = flatten(JSON.parse(jsonString));
-						// customConsole.appendLine('flattned ' + JSON.stringify(flattned, null, 2));
+						// customConsole.appendLine('flattned ' + JSON.stringify(flattned, null, 4));
 
 						Object.entries(flattned).forEach(([key, value]: any) => {
 							nameSpaceTranslationsMap[key] = { ...nameSpaceTranslationsMap[key], [countryIso]: value };
 						});
 
-						// customConsole.appendLine('. .  1 ' + JSON.stringify(resultJson, null, 2));
+						// customConsole.appendLine('. .  1 ' + JSON.stringify(resultJson, null, 4));
 					} catch (err) {
 						customConsole.appendLine('err ' + JSON.stringify(err));
 					}

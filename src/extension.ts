@@ -1,10 +1,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as path from 'path';
-import * as fs from 'fs';
-import * as XLSX from 'xlsx';
-import { flatten, unflatten } from './flatTools';
 import { flatCommand } from './commands/flat';
 import { unflatCommand } from './commands/unflat';
 import { singleXlslCommand } from './commands/singlexlsx';

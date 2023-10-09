@@ -46,16 +46,16 @@ export const singleXlslCommand = (customConsole: vscode.OutputChannel) => async 
 				if (match[2] === 'json') {
 					try {
 						const jsonString = fs.readFileSync(filePath, 'utf8');
-						// customConsole.appendLine('---' + JSON.stringify(JSON.parse(data), null, 2));
+						// customConsole.appendLine('---' + JSON.stringify(JSON.parse(data), null, 4));
 
 						const flattned = flatten(JSON.parse(jsonString));
-						// customConsole.appendLine('flattned ' + JSON.stringify(flattned, null, 2));
+						// customConsole.appendLine('flattned ' + JSON.stringify(flattned, null, 4));
 
 						Object.entries(flattned).forEach(([key, value]: any) => {
 							resultJson[key] = { ...resultJson[key], [countryIso]: value };
 						});
 
-						// customConsole.appendLine('. .  1 ' + JSON.stringify(resultJson, null, 2));
+						// customConsole.appendLine('. .  1 ' + JSON.stringify(resultJson, null, 4));
 					} catch (err) {
 						customConsole.appendLine('err ' + JSON.stringify(err));
 					}
@@ -65,10 +65,10 @@ export const singleXlslCommand = (customConsole: vscode.OutputChannel) => async 
 			}
 		}
 
-		// customConsole.appendLine('. . 2 ' + JSON.stringify(resultJson, null, 2));
+		// customConsole.appendLine('. . 2 ' + JSON.stringify(resultJson, null, 4));
 
 		const rows = Object.entries(resultJson).map(([k, v]) => ({ key: k, ...v }));
-		customConsole.appendLine(JSON.stringify(rows, null, 2));
+		customConsole.appendLine(JSON.stringify(rows, null, 4));
 
 		const worksheet = XLSX.utils.json_to_sheet(rows);
 
